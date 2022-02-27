@@ -68,11 +68,11 @@ const Main = () => {
       <Box alignItems='center'>
         <Button onPress={handleSearchStock}>Pesquisar</Button>
       </Box>
-      <Heading fontSize='lg'>{`value: ${stock?.results[0].shortName}`}</Heading>
-      <Heading fontSize='lg'>{`value: ${stock?.results[0].longName}`}</Heading>
-      <Heading fontSize='lg'>{`value: ${stock?.results[0].symbol}`}</Heading>
-      <Heading fontSize='lg'>{`value: ${stock?.results[0].currency}`}</Heading>
-      <Heading fontSize='lg'>{`value: ${stock?.results[0].regularMarketPrice}`}</Heading>
+      <Heading fontSize='lg'>{`${stock?.results[0].shortName ?? ''}`}</Heading>
+      <Heading fontSize='lg'>{`${stock?.results[0].longName ?? ''}`}</Heading>
+      <Heading fontSize='lg'>{`${stock?.results[0].symbol ?? ''}`}</Heading>
+      <Heading fontSize='lg'>{`${stock?.results[0].currency ?? ''}`}</Heading>
+      <Heading fontSize='lg'>{`${stock?.results[0].regularMarketPrice ?? ''}`}</Heading>
       {fundamentaDataList &&
         fundamentaDataList?.map((data: FundamentalData, idx: number) => {
           return (

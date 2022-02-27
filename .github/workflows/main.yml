@@ -15,15 +15,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   publish:
-    # The type of runner that the job will run on
     name: Test
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -31,8 +26,7 @@ jobs:
       - uses: expo/expo-github-action@v6
         with:
           expo-version: 4.X
-
-        run: yarn
-        run: yarn test
+       - run: yarn
+       - run: yarn test
 
      

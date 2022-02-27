@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "start": "expo start",
+    "test": "jest",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -42,6 +43,7 @@
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/parser": "^5.12.1",
     "eslint-plugin-functional": "^4.2.0",
+    "jest": "^27.5.1",
     "tsutils": "^3.21.0",
     "typescript": "~4.0.0"
   },

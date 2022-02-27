@@ -1,0 +1,101 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier", "functional"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.tsx", "**/*.test.tsx"]
+      }
+    ],
+    "functional/no-let": "off",
+    "functional/immutable-data": [
+      "error",
+      {
+        "ignorePattern": "mutable*",
+        "ignoreImmediateMutation": true,
+        "ignoreAccessorPattern": "**.mutable_*"
+      }
+    ],
+    "functional/no-method-signature": "error",
+    "functional/prefer-readonly-type": [
+      "error",
+      {
+        "ignorePattern": ["mutable*"]
+      }
+    ],
+    "prettier/prettier": "warn",
+    "no-unused-expressions": "off",
+    "react/display-name": "off",
+    "no-restricted-globals": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/no-multi-comp": "off",
+    "camelcase": "off",
+    "react/prop-types": 0,
+    "no-multiple-empty-lines": 1,
+    "react/jsx-closing-bracket-location": 0,
+    "import/no-unresolved": "off",
+    "import/order": "off",
+    "react/destructuring-assignment": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "default-case": 0,
+    "no-use-before-define": "off",
+    "react/no-array-index-key": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

@@ -10,8 +10,10 @@ const Main = () => {
   const [value, setValue] = useState<string>('');
   const [stock, setStock] = useState<RootObject | null>();
   const [stocksList, setStocksList] = useState<Array<string>>(['']);
-  const [fundamentaDataList, setFundamentaDataList] = useState<Array<FundamentalData>>();
+  const [fundamentalDataList, setFundamentalDataList] = useState<Array<FundamentalData>>();
   const { setColorMode } = useColorMode();
+
+  const [a, seta] = useState<any>();
 
   const listAllStocksRequest = useCallback(async () => {
     try {
@@ -42,17 +44,13 @@ const Main = () => {
   const handleSearchStockFundamentals = async () => {
     try {
       const response: Array<FundamentalData> = ((await listDataStock(value)) as any).data;
-      setFundamentaDataList(response);
-      console.log('aqui', response);
-    } catch (err) {
-      console.log('aqui fund', value, err);
-    }
+      setFundamentalDataList(response);
+    } catch (err) {}
   };
 
   return (
     <VStack w='100%' space={5} alignSelf='center'>
       <Heading fontSize='lg'>Pesquise pelo código da ação desejada</Heading>
-
       <Input
         placeholder='Search'
         variant='filled'
@@ -73,8 +71,8 @@ const Main = () => {
       <Heading fontSize='lg'>{`${stock?.results[0].symbol ?? ''}`}</Heading>
       <Heading fontSize='lg'>{`${stock?.results[0].currency ?? ''}`}</Heading>
       <Heading fontSize='lg'>{`${stock?.results[0].regularMarketPrice ?? ''}`}</Heading>
-      {fundamentaDataList &&
-        fundamentaDataList?.map((data: FundamentalData, idx: number) => {
+      {fundamentalDataList &&
+        fundamentalDataList?.map((data: FundamentalData, idx: number) => {
           return (
             <Box alignItems='center'>
               <Heading fontSize='sm'>{`${data.title}: ${data.value} - ${data.details}`}</Heading>

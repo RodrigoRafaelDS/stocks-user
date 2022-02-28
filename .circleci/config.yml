@@ -26,4 +26,3 @@ jobs:
       # run tests!
       - run: yarn test
       - run: yarn jest --coverage
-      - uses: SonarSource/sonarcloud-github-action@master

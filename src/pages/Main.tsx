@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Share, Clipboard } from 'react-native';
+
 import { Heading, VStack, Input, Icon, Button, Box, useColorMode } from 'native-base';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -12,9 +14,30 @@ const Main = () => {
   const [stocksList, setStocksList] = useState<Array<string>>(['']);
   const [fundamentalDataList, setFundamentalDataList] = useState<Array<FundamentalData>>();
   const { setColorMode } = useColorMode();
-
-  const [a, seta] = useState<any>();
-
+  const messageTest = '0123456789';
+  let element = '';
+  for (let index = 0; index < 3000; index++) {
+    element = element + '\n -> : ->' + index + ': ' + messageTest;
+  }
+  const onShare = async () => {
+    Clipboard.setString(element);
+    try {
+      const result = await Share.share({
+        message: element
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error?.message || '');
+    }
+  };
   const listAllStocksRequest = useCallback(async () => {
     try {
       setStocksList(((await listAllStocks()) as any).data.stocks);
@@ -31,8 +54,9 @@ const Main = () => {
   };
 
   const handleSearchStock = async () => {
-    handleSearchStockList();
-    handleSearchStockFundamentals();
+    // handleSearchStockList();
+    // handleSearchStockFundamentals();
+    onShare();
   };
   const handleSearchStockList = async () => {
     try {
